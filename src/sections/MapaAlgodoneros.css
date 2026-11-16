@@ -1,0 +1,422 @@
+.mapa {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.mapa h2 {
+  color: var(--cream);
+}
+
+.mapa h2 em {
+  color: var(--mint);
+}
+
+.mapa__dots {
+  top: 70px;
+  right: 4%;
+  color: var(--mint);
+}
+
+.mapa__filter {
+  margin-bottom: 24px;
+}
+
+.mapa__layout {
+  display: grid;
+  gap: 24px;
+  align-items: start;
+}
+
+.mapa__figure {
+  width: 100%;
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+.mapa__map {
+  position: relative;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--navy-deep);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.28);
+}
+
+/* El dibujo y los puntos comparten el mismo sistema de coordenadas */
+.mapa__canvas {
+  position: relative;
+}
+
+.mapa__source {
+  margin-top: 10px;
+  font-size: 11px;
+  line-height: 1.5;
+  color: rgba(247, 240, 228, 0.55);
+}
+
+/* ---------- Dibujo del mapa ---------- */
+.chaco-map {
+  --map-water: #2a7590;
+  --map-neighbor: #062f4c;
+  --map-land: #0d4b6b;
+  --map-land-hover: #15607f;
+
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.chaco-map__water {
+  fill: var(--map-water);
+}
+
+.chaco-map__neighbors path {
+  fill: var(--map-neighbor);
+  stroke: rgba(247, 240, 228, 0.16);
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+}
+
+/* El trazo grueso queda tapado por dentro: solo se ve el borde exterior */
+.chaco-map__border {
+  fill: none;
+  stroke: var(--mint);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+.chaco-map__departments path {
+  fill: var(--map-land);
+  stroke: rgba(142, 216, 195, 0.32);
+  stroke-width: 0.8;
+  stroke-linejoin: round;
+  cursor: pointer;
+  transition: fill 0.2s;
+}
+
+.chaco-map__departments path.is-active {
+  fill: var(--map-land-hover);
+}
+
+.chaco-map__texture {
+  fill: url(#chaco-dots);
+  pointer-events: none;
+}
+
+.chaco-map__highlight {
+  fill: rgba(142, 216, 195, 0.1);
+  stroke: var(--mint);
+  stroke-width: 1.6;
+  stroke-linejoin: round;
+  pointer-events: none;
+}
+
+.chaco-map__labels {
+  pointer-events: none;
+}
+
+.chaco-map__neighbor {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  fill: rgba(247, 240, 228, 0.42);
+}
+
+.chaco-map__river {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  fill: #9fd6e6;
+  paint-order: stroke;
+  stroke: var(--map-neighbor);
+  stroke-width: 3px;
+}
+
+.chaco-map__region {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  fill: rgba(142, 216, 195, 0.5);
+}
+
+.chaco-map__town circle {
+  fill: var(--cream);
+  stroke: var(--map-land);
+  stroke-width: 1.5;
+}
+
+.chaco-map__town text {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 700;
+  fill: rgba(247, 240, 228, 0.82);
+  paint-order: stroke;
+  stroke: var(--map-land);
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+.chaco-map__town.is-major text {
+  font-size: 13.5px;
+  font-weight: 800;
+  fill: var(--cream);
+}
+
+.chaco-map__compass circle {
+  fill: rgba(3, 45, 74, 0.65);
+  stroke: rgba(247, 240, 228, 0.35);
+}
+
+.chaco-map__compass path {
+  fill: var(--tierra-light);
+}
+
+.chaco-map__compass text {
+  font-family: var(--font-display);
+  font-size: 9px;
+  font-weight: 800;
+  fill: var(--cream);
+}
+
+.chaco-map__scale rect {
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 1;
+}
+
+.chaco-map__scale rect.is-filled {
+  fill: var(--cream);
+}
+
+.chaco-map__scale text {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 700;
+  fill: var(--cream);
+}
+
+/* En pantallas chicas se ocultan las localidades secundarias */
+@media (max-width: 767px) {
+  .chaco-map__town:not(.is-major),
+  .chaco-map__river {
+    display: none;
+  }
+
+  .chaco-map__town.is-major text {
+    font-size: 15.5px;
+  }
+
+  .mapa__pin span {
+    width: 14px;
+    height: 14px;
+    border-width: 2px;
+  }
+
+  .chaco-map__neighbor {
+    font-size: 15px;
+  }
+
+  .chaco-map__region {
+    font-size: 17px;
+  }
+}
+
+/* Departamento activo: debajo del mapa en el celular, sobre el mapa en pantallas grandes */
+.mapa__zone {
+  display: grid;
+  gap: 2px;
+  min-height: 64px;
+  align-content: center;
+  padding: 10px 16px;
+  border-top: 1px solid rgba(142, 216, 195, 0.18);
+}
+
+@media (min-width: 768px) {
+  .mapa__zone {
+    position: absolute;
+    left: 12px;
+    top: 12px;
+    z-index: 1;
+    min-height: 0;
+    max-width: 260px;
+    padding: 10px 14px;
+    border: 0;
+    border-radius: 14px;
+    background: rgba(3, 45, 74, 0.82);
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+  }
+}
+
+.mapa__zone .label {
+  font-size: 9px;
+  color: var(--mint);
+}
+
+.mapa__zone strong {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.mapa__zone-count,
+.mapa__zone-hint {
+  font-size: 12px;
+  color: rgba(247, 240, 228, 0.75);
+}
+
+/* Puntos: área táctil de 44 px con un punto del color de la etapa */
+.mapa__pin {
+  position: absolute;
+  width: var(--tap);
+  height: var(--tap);
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.mapa__pin span {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid var(--navy);
+  background: var(--stage-cultivo);
+  box-shadow: 0 0 0 0 rgba(142, 216, 195, 0.5);
+  transition: transform 0.2s;
+}
+
+.mapa__pin[data-stage='crecimiento'] span {
+  background: var(--stage-crecimiento);
+}
+
+.mapa__pin[data-stage='cosecha'] span {
+  background: var(--stage-cosecha);
+}
+
+.mapa__pin:hover span {
+  transform: scale(1.2);
+}
+
+.mapa__pin[aria-pressed='true'] span {
+  transform: scale(1.35);
+  border-color: var(--cream);
+  animation: pin-pulse 1.8s ease-out infinite;
+}
+
+@keyframes pin-pulse {
+  from {
+    box-shadow: 0 0 0 0 rgba(247, 240, 228, 0.55);
+  }
+  to {
+    box-shadow: 0 0 0 16px rgba(247, 240, 228, 0);
+  }
+}
+
+/* Tarjeta del punto elegido */
+.map-card {
+  display: grid;
+  gap: 18px;
+  background: var(--cream);
+  color: var(--navy);
+  border-radius: var(--radius-card);
+  padding: 20px;
+}
+
+.map-card__photo {
+  border-radius: 16px;
+  max-width: 160px;
+}
+
+.map-card__body {
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.map-card h3 {
+  font-size: 30px;
+}
+
+.map-card__meta {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+.map-card__phrase {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.map-card--empty {
+  background: var(--navy-soft);
+  color: var(--cream);
+  padding: 28px;
+}
+
+.map-card--empty strong {
+  color: var(--mint);
+}
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.map-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.map-legend span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--stage-cultivo);
+}
+
+.map-legend li[data-stage='crecimiento'] span {
+  background: var(--stage-crecimiento);
+}
+
+.map-legend li[data-stage='cosecha'] span {
+  background: var(--stage-cosecha);
+}
+
+.map-legend li.map-legend__town span {
+  width: 8px;
+  height: 8px;
+  background: var(--cream);
+}
+
+@media (min-width: 768px) {
+  .map-card:not(.map-card--empty) {
+    grid-template-columns: 160px 1fr;
+    align-items: start;
+    padding: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .mapa__layout {
+    grid-template-columns: 1.55fr 1fr;
+    gap: 40px;
+  }
+
+  .map-card:not(.map-card--empty) {
+    grid-template-columns: 1fr;
+  }
+}

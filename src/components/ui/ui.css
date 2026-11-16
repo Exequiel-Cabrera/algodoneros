@@ -1,0 +1,182 @@
+/* ---------- Etiqueta de etapa ---------- */
+.stage-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: var(--navy);
+  white-space: nowrap;
+}
+
+.stage-tag[data-stage='cultivo'] {
+  background: var(--stage-cultivo);
+}
+
+.stage-tag[data-stage='crecimiento'] {
+  background: var(--stage-crecimiento);
+}
+
+.stage-tag[data-stage='cosecha'] {
+  background: var(--stage-cosecha);
+}
+
+/* ---------- Foto real ---------- */
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  background: var(--cream-deep);
+}
+
+/* ---------- Foto de relleno ---------- */
+.photo-ph {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: var(--navy-soft);
+  color: var(--mint);
+  text-align: center;
+  padding: 16px;
+}
+
+.photo-ph::before {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border: 1.5px dashed currentColor;
+  border-radius: 14px;
+  opacity: 0.35;
+}
+
+.photo-ph__label {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.photo-ph__label svg {
+  width: 28px;
+  height: 28px;
+  opacity: 0.8;
+}
+
+.photo-ph[data-stage='crecimiento'] {
+  background: var(--mint-pale);
+  color: var(--green-dark);
+}
+
+.photo-ph[data-stage='cosecha'] {
+  background: var(--cream-deep);
+  color: var(--navy);
+}
+
+.photo-ph[data-tone='light'] {
+  background: var(--cream-deep);
+  color: var(--navy);
+}
+
+/* ---------- Botones de filtro por etapa ---------- */
+.filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filter__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1.5px solid rgba(3, 45, 74, 0.25);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--navy);
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.filter__chip:hover {
+  border-color: var(--navy);
+}
+
+.filter__chip[aria-pressed='true'] {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: var(--cream);
+}
+
+.filter__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--stage-cultivo);
+}
+
+.filter__chip[data-stage='crecimiento'] .filter__dot {
+  background: var(--stage-crecimiento);
+}
+
+.filter__chip[data-stage='cosecha'] .filter__dot {
+  background: var(--stage-cosecha);
+}
+
+/* Sobre fondo oscuro */
+.filter--dark .filter__chip {
+  border-color: rgba(247, 240, 228, 0.35);
+  color: var(--cream);
+}
+
+.filter--dark .filter__chip:hover {
+  border-color: var(--cream);
+}
+
+.filter--dark .filter__chip[aria-pressed='true'] {
+  background: var(--cream);
+  border-color: var(--cream);
+  color: var(--navy);
+}
+
+/* ---------- Flechas de carrusel ---------- */
+.carousel-arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-arrows__btn {
+  width: var(--tap);
+  height: var(--tap);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--navy);
+  color: var(--cream);
+  font-size: 18px;
+  transition:
+    opacity 0.2s,
+    transform 0.2s;
+}
+
+.carousel-arrows__btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.carousel-arrows__btn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}

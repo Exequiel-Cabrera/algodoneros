@@ -1,0 +1,141 @@
+.recorrido {
+  background: var(--cream);
+}
+
+/* Tarjetas de etapa: menta, verde y dorado, con texto e íconos en azul noche */
+.stage-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 360px;
+  padding: 28px;
+  border-radius: var(--radius-card);
+  color: var(--navy);
+  overflow: hidden;
+  transition:
+    opacity 0.7s ease,
+    transform 0.25s;
+}
+
+.stage-card:hover {
+  transform: translateY(-4px);
+}
+
+.stage-card[data-stage='cultivo'] {
+  background: var(--stage-cultivo);
+}
+
+.stage-card[data-stage='crecimiento'] {
+  background: var(--stage-crecimiento);
+}
+
+.stage-card[data-stage='cosecha'] {
+  background: var(--stage-cosecha);
+}
+
+.stage-card__num {
+  position: absolute;
+  top: 24px;
+  right: 26px;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 15px;
+}
+
+.stage-card__icon {
+  width: 84px;
+  height: 84px;
+}
+
+.stage-card__kicker {
+  margin-bottom: 10px;
+}
+
+.stage-card h3 {
+  margin-bottom: 12px;
+}
+
+.stage-card p:last-child {
+  font-size: 15px;
+}
+
+.stage-card__more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.stage-card__arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 15px;
+  background: var(--navy);
+  color: var(--cream);
+}
+
+@media (min-width: 768px) {
+  .recorrido__cards.rail {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-columns: auto;
+    gap: 20px;
+    overflow: visible;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+/* Franja 1949 */
+.franja-1949 {
+  margin-top: 20px;
+  display: grid;
+  gap: 14px;
+  background: var(--white);
+  border-radius: var(--radius-card);
+  padding: 28px;
+}
+
+.franja-1949 strong {
+  font-family: var(--font-display);
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  color: var(--gold);
+}
+
+.franja-1949 p {
+  font-size: 15px;
+  max-width: 620px;
+}
+
+.franja-1949 a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--tap);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--tierra);
+  white-space: nowrap;
+}
+
+@media (min-width: 1024px) {
+  .franja-1949 {
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 30px;
+    padding: 28px 34px;
+  }
+}

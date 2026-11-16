@@ -1,0 +1,81 @@
+.cultura {
+  background: var(--navy-deep);
+  color: var(--cream);
+}
+
+.cultura h2 {
+  color: var(--cream);
+}
+
+.cultura h2 em {
+  color: var(--mint);
+}
+
+.cultura__dots {
+  top: 70px;
+  right: 4%;
+  color: var(--mint);
+}
+
+.pillars {
+  display: grid;
+  gap: 18px;
+}
+
+.pillar {
+  border: 1.5px solid rgba(142, 216, 195, 0.28);
+  border-radius: var(--radius-card);
+  padding: 30px;
+}
+
+.pillar__num {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--mint);
+}
+
+.pillar h3 {
+  color: var(--cream);
+  font-size: 30px;
+  margin: 18px 0 12px;
+}
+
+.pillar p {
+  font-size: 15px;
+  color: rgba(247, 240, 228, 0.78);
+}
+
+.cotton-line {
+  margin-top: 40px;
+  display: grid;
+  gap: 18px;
+  background: var(--navy-soft);
+  border-radius: var(--radius-card);
+  padding: 28px;
+}
+
+.cotton-line p {
+  font-size: 16px;
+  color: var(--cream);
+}
+
+.cotton-line strong {
+  color: var(--mint);
+}
+
+@media (min-width: 1024px) {
+  .pillars {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .cotton-line {
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 30px;
+    padding: 30px 34px;
+  }
+}

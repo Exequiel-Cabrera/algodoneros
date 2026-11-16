@@ -1,0 +1,336 @@
+/* ---------- Aviso de maqueta ---------- */
+.mock-note {
+  background: var(--gold);
+  color: var(--navy-deep);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.4;
+  text-align: center;
+  padding: 8px 16px;
+  letter-spacing: 0.02em;
+}
+
+/* ---------- Cabecera ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 253, 248, 0.94);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(3, 45, 74, 0.08);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  height: var(--header-h);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--navy-deep);
+  min-height: var(--tap);
+}
+
+.brand__mark {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 12px;
+  background: var(--navy);
+  display: grid;
+  place-items: center;
+}
+
+.brand__text strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.brand__text small {
+  display: block;
+  margin-top: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.brand__text b {
+  color: var(--tierra);
+  font-weight: 800;
+}
+
+/* Botón hamburguesa */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: var(--tap);
+  height: var(--tap);
+  padding: 0 9px;
+}
+
+.nav-toggle span {
+  display: block;
+  height: 2px;
+  background: var(--navy);
+  border-radius: 2px;
+  transition:
+    transform 0.25s,
+    opacity 0.25s;
+}
+
+.nav-toggle[aria-expanded='true'] span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle[aria-expanded='true'] span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle[aria-expanded='true'] span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Menú: en el celular se despliega debajo de la cabecera */
+.main-nav {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--navy);
+  padding: 20px 16px 28px;
+  max-height: calc(100svh - var(--header-h));
+  overflow-y: auto;
+}
+
+.main-nav.is-open {
+  display: block;
+}
+
+.main-nav ul {
+  display: grid;
+  gap: 4px;
+}
+
+.main-nav a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: var(--tap);
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.main-nav__new i {
+  font-family: var(--font-body);
+  font-style: normal;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  background: var(--tierra);
+  color: var(--white);
+  padding: 3px 7px;
+  border-radius: 999px;
+}
+
+.main-nav__new.active {
+  color: var(--mint);
+}
+
+.nav-cta {
+  margin-top: 12px;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--tierra);
+  color: var(--white) !important;
+  font-family: var(--font-body) !important;
+  font-size: 15px !important;
+  font-weight: 800 !important;
+  text-transform: none !important;
+  padding: 10px 20px;
+}
+
+@media (min-width: 1024px) {
+  .nav-toggle {
+    display: none;
+  }
+
+  .main-nav,
+  .main-nav.is-open {
+    display: block;
+    position: static;
+    background: none;
+    padding: 0;
+    max-height: none;
+    overflow: visible;
+  }
+
+  .main-nav ul {
+    display: flex;
+    align-items: center;
+    gap: 26px;
+  }
+
+  .main-nav a {
+    position: relative;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: none;
+    color: var(--navy-deep);
+  }
+
+  .main-nav a:hover {
+    color: var(--green-dark);
+  }
+
+  .main-nav__new.active {
+    color: var(--navy-deep);
+  }
+
+  .main-nav__new.active::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 6px;
+    height: 2px;
+    background: var(--tierra);
+  }
+
+  .nav-cta {
+    margin-top: 0;
+    padding: 10px 18px;
+    font-size: 13px !important;
+  }
+
+  .nav-cta:hover {
+    background: #9e3f22;
+    color: var(--white) !important;
+  }
+}
+
+/* ---------- Pie de página ---------- */
+.site-footer {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 64px 0 96px;
+}
+
+.site-footer__grid {
+  display: grid;
+  gap: 36px;
+}
+
+.site-footer__title {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  color: var(--mint);
+  margin-bottom: 12px;
+}
+
+.site-footer ul {
+  display: grid;
+  gap: 2px;
+  font-size: 14px;
+}
+
+.site-footer ul a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+}
+
+.site-footer ul a:hover {
+  color: var(--mint);
+}
+
+.brand--footer {
+  color: var(--cream);
+}
+
+.brand--footer .brand__mark {
+  background: var(--navy-soft);
+}
+
+.brand--footer .brand__text small {
+  color: var(--mint);
+}
+
+.site-footer__brand p {
+  font-size: 14px;
+  color: rgba(247, 240, 228, 0.72);
+  margin-top: 14px;
+  max-width: 300px;
+}
+
+.site-footer__bottom {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(247, 240, 228, 0.14);
+  font-size: 12px;
+  color: rgba(247, 240, 228, 0.65);
+  display: flex;
+  justify-content: space-between;
+  gap: 12px 20px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .site-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .site-footer {
+    padding-bottom: 34px;
+  }
+
+  .site-footer__grid {
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 40px;
+  }
+}
+
+/* ---------- Botón flotante de WhatsApp ---------- */
+.whatsapp-fab {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 40;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--green);
+  color: var(--white);
+  box-shadow: 0 12px 30px rgba(2, 34, 56, 0.28);
+  transition: transform 0.2s;
+}
+
+.whatsapp-fab:hover {
+  transform: scale(1.06);
+}

@@ -1,0 +1,51 @@
+.parte {
+  background: var(--cream);
+}
+
+/* Aporte mutuo */
+.two-way {
+  display: grid;
+  gap: 20px;
+}
+
+.way {
+  border-radius: var(--radius-card);
+  padding: 30px;
+}
+
+.way .label {
+  margin-bottom: 12px;
+}
+
+.way h3 {
+  font-size: 30px;
+  margin-bottom: 12px;
+}
+
+.way p:last-child {
+  font-size: 15px;
+}
+
+.way--fiesta {
+  background: var(--tierra-pale);
+  color: var(--navy);
+}
+
+.way--fiesta .label {
+  color: var(--tierra);
+}
+
+.way--algodoneros {
+  background: var(--navy);
+  color: var(--cream);
+}
+
+.way--algodoneros .label {
+  color: var(--mint);
+}
+
+@media (min-width: 768px) {
+  .two-way {
+    grid-template-columns: 1fr 1fr;
+  }
+}

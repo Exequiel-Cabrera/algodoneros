@@ -1,0 +1,59 @@
+/*
+ * Identidad visual de Algodoneros.
+ * Fuente: TP3 GEPC, Consigna 4 · Paleta de color y Tipografía.
+ */
+:root {
+  /* Colores que vienen del sitio de la fiesta */
+  --navy: #032d4a; /* Azul noche */
+  --navy-deep: #022238; /* Azul profundo */
+  --navy-soft: #0b4462;
+  --teal: #0e5a63; /* Verde azulado para el degradado de la apertura */
+  --cream: #f7f0e4; /* Crema: fondo principal de lectura */
+  --cream-deep: #eddfcb;
+  --white: #fffdf8; /* Blanco algodón */
+  --mint: #8ed8c3; /* Menta · etapa Cultivo */
+  --mint-pale: #d9eee5;
+  --green: #0ba968; /* Verde · etapa Crecimiento */
+  --green-dark: #078654; /* Verde oscuro */
+  --gold: #bd9854; /* Dorado · etapa Cosecha */
+  --text: #163044;
+  --muted: #637381;
+
+  /* Color propio de Algodoneros */
+  --tierra: #b24a2a; /* sobre fondos claros */
+  --tierra-light: #e8875c; /* sobre fondos azules */
+  --tierra-pale: #f6e2d6; /* fondos grandes */
+
+  /* Código de etapas */
+  --stage-cultivo: var(--mint);
+  --stage-crecimiento: var(--green);
+  --stage-cosecha: var(--gold);
+
+  /* Tipografía */
+  --font-body: 'Manrope Variable', 'Manrope', Arial, sans-serif;
+  --font-display: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+
+  /* Escala en el celular (crece en pantallas grandes con clamp) */
+  --fs-hero: clamp(44px, 9.5vw, 132px);
+  --fs-h2: clamp(40px, 6.2vw, 78px);
+  --fs-story-title: clamp(36px, 5vw, 60px);
+  --fs-quote: clamp(28px, 3.2vw, 38px);
+  --fs-subtitle: clamp(24px, 2.6vw, 34px);
+  --fs-body: 17px;
+  --fs-label: 11px;
+
+  /* Layout */
+  --shell: min(1240px, calc(100% - 32px));
+  --header-h: 72px;
+  --radius: 30px;
+  --radius-card: 24px;
+  --shadow: 0 24px 70px rgba(2, 34, 56, 0.13);
+  --tap: 44px; /* alto mínimo de botones y enlaces */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --shell: min(1240px, calc(100% - 48px));
+    --header-h: 78px;
+  }
+}

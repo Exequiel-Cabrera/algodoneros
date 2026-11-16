@@ -1,0 +1,47 @@
+.sumate {
+  background: var(--tierra);
+  color: var(--cream);
+  text-align: center;
+}
+
+.sumate__dots {
+  top: 50px;
+  left: 6%;
+  color: var(--cream);
+}
+
+.sumate h2 {
+  color: var(--cream);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.sumate h2 em {
+  color: var(--mint);
+}
+
+.sumate__text {
+  max-width: 600px;
+  margin: 24px auto 36px;
+  color: rgba(255, 253, 248, 0.9);
+}
+
+.sumate__actions {
+  justify-content: center;
+}
+
+.sumate .btn--ghost {
+  border-color: var(--cream);
+}
+
+.sumate__audio {
+  margin-top: 28px;
+  font-size: 14px;
+  color: rgba(255, 253, 248, 0.9);
+}
+
+.sumate__audio a {
+  font-weight: 800;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
